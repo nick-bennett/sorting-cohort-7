@@ -9,11 +9,8 @@ public class Sorting {
       return;
     }
     int leftSize = data.length / 2;
-    int rightSize = data.length - leftSize;
-    int[] left;
-    int[] right;
-    left = Arrays.copyOf(data, leftSize);
-    right = Arrays.copyOfRange(data, leftSize, data.length);
+    int[] left = Arrays.copyOf(data, leftSize);
+    int[] right = Arrays.copyOfRange(data, leftSize, data.length);
     sort(left);
     sort(right);
     int leftIndex = 0;
@@ -21,13 +18,10 @@ public class Sorting {
     int mergeIndex = 0;
     while (leftIndex < left.length && rightIndex < right.length) {
       if (left[leftIndex] < right[rightIndex]) {
-        data[mergeIndex] = left[leftIndex];
-        leftIndex++;
+        data[mergeIndex++] = left[leftIndex++];
       } else {
-        data[mergeIndex] = right[rightIndex];
-        rightIndex++;
+        data[mergeIndex++] = right[rightIndex++];
       }
-      mergeIndex++;
     }
     if (leftIndex < left.length) {
       System.arraycopy(left, leftIndex, data, mergeIndex, data.length - mergeIndex);
